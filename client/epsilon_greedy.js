@@ -76,7 +76,7 @@
     })
 
     if(ids.length > 0) {
-      $.getJSON('/api/epsilon/' + name, function(data) {
+      $.getJSON('/epsilon/test' + name, function(data) {
         var levers = Levers().select(
           ids,
           Levers().objectify(data.levers),
@@ -85,11 +85,11 @@
         var eg = EpsilonGreedy(spec).seed().selectLever(function(test) {
           var selected = test.getSelectedLever();
           $('.epsilon-lever:not([data-levername='+selected.name+'])').remove()
-          $.post('/api/epsilon', {_method: 'put', test: test.getTestData()});
+          $.post('/epsilon/test', {_method: 'put', test: test.getTestData()});
         });
         $(document).on('click', '.epsilon-reward', function(e) {
           eg.rewardSelectedLever(function(test) {
-            $.post('/api/epsilon', {_method: 'put', test: test.getTestData()});
+            $.post('/epsilon/test', {_method: 'put', test: test.getTestData()});
           })
         })
       })
