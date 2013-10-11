@@ -3,7 +3,9 @@
     "version": "0.0.1",
     "description": "An impelmentation of the Epsilon Greedy algorithm",
     "dependencies": {
-        "mongoose": "3.6.7"
+        "mongoose": "3.6.7",
+        "underscore": "~1.4.4",
+        "supergoose": ">= 0.0.8"
     },
     "devDependencies": {
         "karma": "0.8.5"
