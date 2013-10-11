@@ -98,7 +98,7 @@
     })
 
     if(ids.length > 0) {
-      $.getJSON('/epsilon/test' + name, function(data) {
+      $.getJSON('/epsilon/test/' + name, function(data) {
         var levers = Levers().select(
           ids,
           Levers().objectify(data.levers),
