@@ -1,0 +1,28 @@
+{
+    "name": "epsilon",
+    "version": "0.0.1",
+    "description": "An impelmentation of the Epsilon Greedy algorithm",
+    "dependencies": {
+        "mongoose": "3.6.7"
+    },
+    "devDependencies": {
+        "karma": "0.8.5"
+    },
+    "scripts": {
+        "test": "karma start --single-run --log-level warn ./test/client/config.js"
+    },
+    "author": {
+        "name": "Matt Roman",
+        "email": "matt@jamplify.com"
+    },
+    "contributors": [
+        {
+            "name": "Matt Roman",
+            "email": "matt@jamplify.com"
+        },
+        {
+            "name": "JP Erkelens",
+            "email": "jp@jamplify.com"
+        }
+    ]
+}
