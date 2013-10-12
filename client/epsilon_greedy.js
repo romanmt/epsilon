@@ -93,6 +93,11 @@
   $(document).ready(function initializeTest() {
     var test = $('.epsilon-test')
     var name = test.attr('data-testname')
+    var leverSelector = test.attr('data-levelselector')
+    var rewardSelector = test.attr('data-rewardselector')
+    if (leverSelector) $(leverSelector).addClass('.epsilon-lever')
+    if (rewardSelector) $(rewardSelector).addClass('.epsilon-reward')
+
     var ids = _.map(test.find('.epsilon-lever'), function (lever) {
       return $(lever).attr('data-levername');
     })
