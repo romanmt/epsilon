@@ -27,7 +27,8 @@ app.configure(function(){
 ```
 
 ### Client Setup
-Copy [epsilon/client/epsilon_greedy.js](client/epsilon_greedy.js) to your public javascripts directory.
+Copy [client/epsilon_greedy.js](client/epsilon_greedy.js) to your public javascripts directory, and include
+it in your html.
 
 ``` html
 <script type='text/javascript' src='YOURJSDIR/epsilon_greedy.js'/>
