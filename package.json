@@ -11,6 +11,7 @@
         "karma": "0.8.5"
     },
     "keywords": ["epsilon", "AB Test", "AB Testing", "A/B", "Epsilon Greedy"],
+    "licence": "MIT",
     "repository": {
         "type": "git",
         "url": "git://github.com/jamplify/epsilon"
