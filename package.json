@@ -1,30 +1,35 @@
 {
-  "name": "epsilon",
-  "version": "0.0.2",
-  "description": "An impelmentation of the Epsilon Greedy algorithm",
-  "dependencies": {
-    "mongoose": "3.6.7",
-    "underscore": "~1.4.4",
-    "supergoose": ">= 0.0.8"
-  },
-  "devDependencies": {
-    "karma": "0.8.5"
-  },
-  "scripts": {
-    "test": "karma start --single-run --log-level warn ./test/client/config.js"
-  },
-  "author": {
-    "name": "Matt Roman",
-    "email": "matt@jamplify.com"
-  },
-  "contributors": [
-    {
-      "name": "Matt Roman",
-      "email": "matt@jamplify.com"
+    "name": "epsilon",
+    "version": "0.0.2",
+    "description": "An impelmentation of the Epsilon Greedy algorithm",
+    "dependencies": {
+        "mongoose": "3.6.7",
+        "underscore": "~1.4.4",
+        "supergoose": ">= 0.0.8"
     },
-    {
-      "name": "JP Erkelens",
-      "email": "jp@jamplify.com"
-    }
-  ]
+    "devDependencies": {
+        "karma": "0.8.5"
+    },
+    "keywords": ["epsilon", "AB Test", "AB Testing", "A/B", "Epsilon Greedy"],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jamplify/epsilon"
+    },
+    "scripts": {
+        "test": "karma start --single-run --log-level warn ./test/client/config.js"
+    },
+    "author": {
+        "name": "Matt Roman",
+        "email": "matt@jamplify.com"
+    },
+    "contributors": [
+        {
+            "name": "Matt Roman",
+            "email": "matt@jamplify.com"
+        },
+        {
+            "name": "JP Erkelens",
+            "email": "jp@jamplify.com"
+        }
+    ]
 }
