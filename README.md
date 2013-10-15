@@ -13,7 +13,7 @@ other 10% Epsilon will chose a random version.
 Installation
 ------------
 
-`npm install git+https://github.com/jamplify/epsilon.git`
+`npm install epsilon`
 
 
 ### Server Setup
