@@ -50,3 +50,6 @@ Creating a test
   <a class='epsilon-reward' href='/checkout'>Check out</a>
 </div>
 ```
+
+- - -
+Thanks to @JacksonTian for giving us the module name, Epsilon.
