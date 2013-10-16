@@ -1,4 +1,4 @@
-epsilon [![Build Status](https://travis-ci.org/jamplify/epsilon.png)](http://travis-ci.org/https://travis-ci.org/jamplify/epsilon)
+epsilon [![Build Status](https://travis-ci.org/jamplify/epsilon.png)](https://travis-ci.org/jamplify/epsilon)
 =======
 
 JQuery and Node Implementation of the epsilon greedy algorithm.
