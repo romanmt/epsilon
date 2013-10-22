@@ -1,7 +1,7 @@
 {
   "name": "epsilon",
   "version": "0.0.2",
-  "description": "An impelmentation of the Epsilon Greedy algorithm",
+  "description": "Better than A/B testing. An impelmentation of the Epsilon Greedy algorithm",
   "dependencies": {
     "mongoose": "3.6.7",
     "underscore": "~1.4.4",
