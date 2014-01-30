@@ -99,6 +99,7 @@
     if (rewardSelector) $(rewardSelector).addClass('.epsilon-reward')
 
     var ids = _.map(test.find('.epsilon-lever'), function (lever) {
+      $(lever).hide()
       return $(lever).attr('data-levername');
     })
 
@@ -112,6 +113,7 @@
         var eg = EpsilonGreedy(spec).seed().selectLever(function(test) {
           var selected = test.getSelectedLever();
           $('.epsilon-lever:not([data-levername='+selected.name+'])').remove()
+          $('.epsilon-lever[data-levername='+selected.name+']').show()
           $.post('/epsilon/test', {_method: 'put', test: test.getTestData()});
         });
         $(document).on('click', '.epsilon-reward', function(e) {
