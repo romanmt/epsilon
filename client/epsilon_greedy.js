@@ -88,20 +88,16 @@
     return exports;
   }
 
-  global.EpsilonGreedy = EpsilonGreedy;
-
-  $(document).ready(function initializeTest() {
-    var test = $('.epsilon-test')
-    var name = test.attr('data-testname')
+  function initializeTest(test, name) {
     var leverSelector = test.attr('data-levelselector')
     var rewardSelector = test.attr('data-rewardselector')
     if (leverSelector) $(leverSelector).addClass('.epsilon-lever')
     if (rewardSelector) $(rewardSelector).addClass('.epsilon-reward')
 
-    var ids = _.map(test.find('.epsilon-lever'), function (lever) {
+    var ids = _.chain(test.find('.epsilon-lever')).map(function (lever) {
       $(lever).hide()
       return $(lever).attr('data-levername');
-    })
+    }).uniq().value()
 
     if(ids.length > 0) {
       $.getJSON('/epsilon/test/' + name, function(data) {
@@ -123,6 +119,19 @@
         })
       })
     }
+  }
+
+  global.EpsilonGreedy = EpsilonGreedy;
+
+  $(document).ready(function() {
+    var test = $('.epsilon-test')
+    var testNames = _.chain(test).map(function(t) {
+      return $(t).attr('data-testname')
+    }).uniq().value()
+
+    _.each(testNames, function(name) {
+      initializeTest($("[data-testname='" + name + "']"), name)
+    })
   })
 
 })(typeof window === 'undefined' ? this : window);
