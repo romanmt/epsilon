@@ -36,19 +36,6 @@
       return _(spec.test.levers).indexOf(lever);
     }
 
-    function increment(index, attribute) {
-      spec.test.levers[index][attribute] += 1;
-      return spec;
-    }
-
-    function incrementRewards(index) {
-      return increment(index, 'totalRewards');
-    }
-
-    function incrementTrials(index) {
-      return increment(index, 'totalTrials');
-    }
-
     var exports = {
       seed: function(randomNumber1, randomNumber2) {
         return new EpsilonGreedy(_(spec).extend({
@@ -69,17 +56,11 @@
         return spec.test.levers[spec.selected];
       },
 
-      rewardSelectedLever: function rewardSelectedLever(callback) {
-        var updated = new EpsilonGreedy(incrementRewards(spec.selected));
-        if(callback) callback(updated);
-        return updated;
-      },
-
       selectLever: function selectLever(callback) {
         var index = (spec.rn1 < 0.1) ?
            selectRandom() :
            selectHighestProbability();
-        var newSpec = _(incrementTrials(index)).extend({selected: index})
+        var newSpec = _(spec).extend({selected: index})
         var updated = new EpsilonGreedy(newSpec);
         if(callback) callback(updated);
         return updated;
@@ -100,22 +81,25 @@
     }).uniq().value()
 
     if(ids.length > 0) {
-      $.getJSON('/epsilon/test/' + name, function(data) {
+      $.post('/epsilon/test/' + name, {levers: ids, _method: 'put'}, function(data) {
         var levers = Levers().select(
           ids,
           Levers().objectify(data.levers),
           {totalTrials: 0, totalRewards: 0})
+
         var spec = {test: {name: name, levers: levers}}
+        var selectedName;
         var eg = EpsilonGreedy(spec).seed().selectLever(function(test) {
           var selected = test.getSelectedLever();
+          selectedName = selected.name
+
           $('.epsilon-lever:not([data-levername='+selected.name+'])').remove()
           $('.epsilon-lever[data-levername='+selected.name+']').show()
-          $.post('/epsilon/test', {_method: 'put', test: test.getTestData()});
+          $.post('/epsilon/test/' + name + '/trial', {name: selectedName});
         });
+
         $(document).on('click', '.epsilon-reward', function(e) {
-          eg.rewardSelectedLever(function(test) {
-            $.post('/epsilon/test', {_method: 'put', test: test.getTestData()});
-          })
+          $.post('/epsilon/test/' + name + '/reward', {name: selectedName});
         })
       })
     }
