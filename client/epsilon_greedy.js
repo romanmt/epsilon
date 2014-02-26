@@ -91,8 +91,8 @@
   function initializeTest(test, name) {
     var leverSelector = test.attr('data-levelselector')
     var rewardSelector = test.attr('data-rewardselector')
-    if (leverSelector) $(leverSelector).addClass('.epsilon-lever')
-    if (rewardSelector) $(rewardSelector).addClass('.epsilon-reward')
+    if (leverSelector) $(leverSelector).addClass('epsilon-lever')
+    if (rewardSelector) $(rewardSelector).addClass('epsilon-reward')
 
     var ids = _.chain(test.find('.epsilon-lever')).map(function (lever) {
       $(lever).hide()
