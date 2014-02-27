@@ -7,57 +7,6 @@ describe('Epsilon Greedy', function() {
     rn2: .1
   }
 
-  describe('#incrementRewards()', function() {
-    it("adds 1 to the total rewards for the selected lever", function() {
-      spec.test.levers = [
-        {name: "page a", totalTrials: 0, totalRewards: 0},
-        {name: "page b", totalTrials: 0, totalRewards: 0},
-      ]
-      spec.selected = 1;
-      expect(EpsilonGreedy(spec)
-             .rewardSelectedLever()
-             .getSelectedLever()
-             .totalRewards).toEqual(1)
-    })
-  })
-
-  describe('#incrementTrials()', function() {
-    it("passes the updated test to the callback", function() {
-      spec.test.levers = [
-        {name: "page a", totalTrials: 0, totalRewards: 0},
-        {name: "page b", totalTrials: 0, totalRewards: 0},
-      ]
-      function callback(test) {
-        expect(test.getSelectedLever().totalTrials).toEqual(1);
-      }
-      EpsilonGreedy(spec).selectLever(callback)
-
-    })
-
-    it("adds once for each selection", function(done) {
-      spec.test.levers = [
-        {name: "page a", totalTrials: 0, totalRewards: 0},
-        {name: "page b", totalTrials: 0, totalRewards: 0},
-      ]
-      expect(EpsilonGreedy(spec)
-             .selectLever()
-             .selectLever()
-             .getSelectedLever()
-             .totalTrials).toEqual(2)
-    })
-
-    it("adds 1 to the total trials for the given lever", function() {
-      spec.test.levers = [
-        {name: "page a", totalTrials: 0, totalRewards: 0},
-        {name: "page b", totalTrials: 0, totalRewards: 0},
-      ]
-      expect(EpsilonGreedy(spec)
-             .selectLever()
-             .getSelectedLever()
-             .totalTrials).toEqual(1)
-    })
-  })
-
   describe('#selectLever()', function() {
     describe('for a brand new tests', function() {
       it("selects the last", function(done) {

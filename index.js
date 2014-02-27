@@ -9,7 +9,8 @@ module.exports = {
   },
 
   bind: function(app) {
-    app.get('/epsilon/test/:testName', epsilon.get)
-    app.put('/epsilon/test', epsilon.update)
+    app.post('/epsilon/test/:testName/trial', epsilon.trial)
+    app.post('/epsilon/test/:testName/reward', epsilon.reward)
+    app.put('/epsilon/test/:testName', epsilon.get)
   }
 }
