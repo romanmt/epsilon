@@ -5,9 +5,9 @@
     var exports = {
       select: function(ids, levers, defaults) {
         function mapper(element) {
-          return levers[element] || _({name: element}).extend(defaults);
+          return levers[element] || _.extend({name: element}, defaults);
         }
-        return _(ids).map(mapper);
+        return _.map(ids, mapper);
       },
 
       objectify: function(levers) {
@@ -15,7 +15,7 @@
           obj[value.name] = value;
           return obj;
         }
-        var object = _(levers).reduce(reducer, {})
+        var object = _.reduce(levers, reducer, {})
         return object;
       }
     }
@@ -30,15 +30,15 @@
     }
 
     function selectHighestProbability() {
-      var lever =  _(spec.test.levers).max(function(lever) {
+      var lever =  _.max(spec.test.levers, function(lever) {
         return lever.totalRewards / lever.totalTrials || 0;
       });
-      return _(spec.test.levers).indexOf(lever);
+      return _.indexOf(spec.test.levers, lever);
     }
 
     var exports = {
       seed: function(randomNumber1, randomNumber2) {
-        return new EpsilonGreedy(_(spec).extend({
+        return new EpsilonGreedy(_.extend(spec, {
           rn1: randomNumber1 || Math.random(),
           rn2: randomNumber2 || Math.random()
         }));
@@ -60,7 +60,7 @@
         var index = (spec.rn1 < 0.1) ?
            selectRandom() :
            selectHighestProbability();
-        var newSpec = _(spec).extend({selected: index})
+        var newSpec = _.extend(spec, {selected: index})
         var updated = new EpsilonGreedy(newSpec);
         if(callback) callback(updated);
         return updated;
