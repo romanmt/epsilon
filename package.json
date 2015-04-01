@@ -1,9 +1,9 @@
 {
   "name": "epsilon",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "description": "Better than A/B testing. Allows you to test multiple versions of a page and select the best version automatically.",
   "dependencies": {
-    "mongoose": "^3.8.5",
+    "mongoose": "= 3.8.13",
     "supergoose": "= 0.2.2",
     "underscore": "~1.4.4"
   },
