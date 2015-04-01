@@ -81,7 +81,12 @@
     }).uniq().value()
 
     if(ids.length > 0) {
-      $.post('/epsilon/test/' + name, {levers: ids, _method: 'put'}, function(data) {
+      $.ajax('/epsilon/test/' + name, {
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({levers: ids, _method: 'put'}),
+        dataType: 'json'
+      }).done(function(data) {
         var levers = Levers().select(
           ids,
           Levers().objectify(data.levers),
